@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Todos CRUD</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="toolbar" aria-label="Nagłówek aplikacji">
+      <div>
+        <h1>Todos</h1>
+        <p>Prosty CRUD dla endpointu <span>/api/Todos</span></p>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="create-title">
+      <div class="panel-header">
+        <h2 id="create-title">Dodaj zadanie</h2>
+        <button id="refresh-button" class="secondary" type="button">Odśwież</button>
+      </div>
+
+      <form id="todo-form" class="todo-form">
+        <input id="description" name="description" type="text" placeholder="Opis zadania" maxlength="240">
+        <label class="checkbox-label">
+          <input id="done" name="done" type="checkbox">
+          Zrobione
+        </label>
+        <button type="submit">Dodaj</button>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="list-title">
+      <div class="panel-header">
+        <h2 id="list-title">Lista zadań</h2>
+        <p id="status" role="status">Ładowanie...</p>
+      </div>
+
+      <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <template id="todo-template">
+    <li class="todo-item">
+      <form class="edit-form">
+        <label class="todo-check">
+          <input class="todo-done" type="checkbox">
+          <span class="sr-only">Status zadania</span>
+        </label>
+        <input class="todo-description" type="text" maxlength="240">
+        <time class="todo-created"></time>
+        <div class="actions">
+          <button class="secondary save-button" type="submit">Zapisz</button>
+          <button class="danger delete-button" type="button">Usuń</button>
+        </div>
+      </form>
+    </li>
+  </template>
+
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
