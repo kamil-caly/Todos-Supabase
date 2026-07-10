@@ -40,9 +40,9 @@ public class TodosController(IConfiguration configuration) : ControllerBase
     }
 
     [HttpGet("{id:long}")]
-    [ProducesResponseType(typeof(TodoItem), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<TodoItem>> GetById(long id, CancellationToken cancellationToken)
+    public async Task<ActionResult<string?>> GetById(long id, CancellationToken cancellationToken)
     {
         await using var connection = await OpenConnectionAsync(cancellationToken);
 
@@ -59,7 +59,7 @@ public class TodosController(IConfiguration configuration) : ControllerBase
             new { Id = id },
             cancellationToken: cancellationToken));
 
-        return todo is null ? NotFound() : Ok(todo);
+        return todo is null ? NotFound() : Ok(todo.Description);
     }
 
     [HttpPost]
