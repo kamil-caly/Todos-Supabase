@@ -5,7 +5,7 @@ const refreshButton = document.querySelector('#refresh-button');
 const todoTemplate = document.querySelector('#todo-template');
 
 const configuredApiBaseUrl = window.TODOS_CONFIG?.apiBaseUrl;
-const defaultApiBaseUrl = configuredApiBaseUrl || (window.location.origin === 'null' ? 'http://localhost:5000' : window.location.origin);
+const defaultApiBaseUrl = window.location.hostname === 'localhost' ? 'http://localhost:5274' : 'https://todos-api-wu38.onrender.com';
 const apiBaseUrl = normalizeBaseUrl(defaultApiBaseUrl);
 
 todoForm.addEventListener('submit', async (event) => {
