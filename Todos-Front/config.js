@@ -1,3 +1,4 @@
 window.TODOS_CONFIG = {
-  apiBaseUrl: 'http://localhost:5274'
+  apiLocalUrl: 'http://localhost:5274',
+  apiProdUrl: 'https://todos-api-wu38.onrender.com',
 };

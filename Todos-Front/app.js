@@ -4,8 +4,9 @@ const statusElement = document.querySelector('#status');
 const refreshButton = document.querySelector('#refresh-button');
 const todoTemplate = document.querySelector('#todo-template');
 
-const configuredApiBaseUrl = window.TODOS_CONFIG?.apiBaseUrl;
-const defaultApiBaseUrl = window.location.hostname === 'localhost' ? 'http://localhost:5274' : 'https://todos-api-wu38.onrender.com';
+const configuredApiLocalUrl = window.TODOS_CONFIG?.apiLocalUrl;
+const configuredApiProdUrl = window.TODOS_CONFIG?.apiProdUrl;
+const defaultApiBaseUrl = window.location.hostname === 'localhost' ? configuredApiLocalUrl : configuredApiProdUrl;
 const apiBaseUrl = normalizeBaseUrl(defaultApiBaseUrl);
 
 todoForm.addEventListener('submit', async (event) => {
