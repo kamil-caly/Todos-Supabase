@@ -6,7 +6,7 @@ const todoTemplate = document.querySelector('#todo-template');
 
 const configuredApiLocalUrl = window.TODOS_CONFIG?.apiLocalUrl;
 const configuredApiProdUrl = window.TODOS_CONFIG?.apiProdUrl;
-const defaultApiBaseUrl = window.location.hostname === 'localhost' ? configuredApiLocalUrl : configuredApiProdUrl;
+const defaultApiBaseUrl = window.location.hostname === '127.0.0.1' ? configuredApiLocalUrl : configuredApiProdUrl;
 const apiBaseUrl = normalizeBaseUrl(defaultApiBaseUrl);
 
 todoForm.addEventListener('submit', async (event) => {
