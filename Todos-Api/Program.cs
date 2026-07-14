@@ -1,5 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 const string AllowAllCorsPolicy = "AllowAll";
+const string AllowLocalhostAndProdPolicy = "AllowLocalhostAndProd";
 
 // Add services to the container.
 
@@ -10,6 +11,12 @@ builder.Services.AddCors(options =>
     {
         policy
             .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+    options.AddPolicy(AllowLocalhostAndProdPolicy, policy =>
+    {
+        policy.WithOrigins("https://kamil-caly.github.io", "http://localhost:3000")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -29,7 +36,8 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
-app.UseCors(AllowAllCorsPolicy);
+//app.UseCors(AllowAllCorsPolicy);
+app.UseCors(AllowLocalhostAndProdPolicy);
 
 app.UseAuthorization();
 
