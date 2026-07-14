@@ -16,7 +16,7 @@ builder.Services.AddCors(options =>
     });
     options.AddPolicy(AllowLocalhostAndProdPolicy, policy =>
     {
-        policy.WithOrigins("https://kamil-caly.github.i", "http://localhost:3000")
+        policy.WithOrigins("https://kamil-caly.github.io", "http://localhost:3000")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
